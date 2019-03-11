@@ -1,20 +1,16 @@
-import { AppPage } from './app.po';
+import { NavbarPage } from './navbar.po';
 import { browser, logging } from 'protractor';
 
-describe('App', () => {
-    let page: AppPage;
+describe('Navbar', () => {
+    let page: NavbarPage;
 
     beforeEach(() => {
-        page = new AppPage();
+        page = new NavbarPage();
         page.navigateTo();
     });
 
-    it('should display <app-navbar>', () => {
-        expect(page.getNavbar()).toBeDefined();
-    });
-
-    it('should display <router-outlet>', () => {
-        expect(page.getOutlet()).toBeDefined();
+    it('should display Crossfit Tracker title', () => {
+        expect(page.getTitle()).toEqual('Crossfit Tracker');
     });
 
     afterEach(async () => {

@@ -1,20 +1,21 @@
-import { AppPage } from './app.po';
+import { LoginPage } from './login.po';
 import { browser, logging } from 'protractor';
 
-describe('App', () => {
-    let page: AppPage;
+describe('Login', () => {
+    let page: LoginPage;
 
     beforeEach(() => {
-        page = new AppPage();
+        page = new LoginPage();
         page.navigateTo();
     });
 
-    it('should display <app-navbar>', () => {
-        expect(page.getNavbar()).toBeDefined();
+    it('should display heading', () => {
+        expect(page.getHeading()).toEqual('Coach Login');
     });
 
-    it('should display <router-outlet>', () => {
-        expect(page.getOutlet()).toBeDefined();
+    it('should display fields', () => {
+        expect(page.getField('name')).toBeDefined();
+        expect(page.getField('password')).toBeDefined();
     });
 
     afterEach(async () => {
