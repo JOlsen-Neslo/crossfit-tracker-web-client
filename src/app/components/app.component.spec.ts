@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -13,7 +14,8 @@ describe('AppComponent', () => {
             ],
             imports: [
                 RouterTestingModule,
-                FormsModule
+                FormsModule,
+                FontAwesomeModule
             ]
         }).compileComponents();
     }));

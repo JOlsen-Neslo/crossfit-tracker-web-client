@@ -18,4 +18,9 @@ export class NavbarPage {
         return element(by.id('navbarNavAltMarkup'));
     }
 
+    getPlusIcon() {
+        return element(by.css('#navbarNavAltMarkup '));
+    }
+
+
 }

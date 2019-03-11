@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from '../components/login/login.component';
 import { CrossfitClassesComponent } from '../components/crossfit-classes/crossfit-classes.component';
+import { RegisterClassComponent } from '../components/register-class/register-class.component';
 
 const routes: Route[] = [
     {
@@ -11,6 +12,10 @@ const routes: Route[] = [
     {
         path: 'coach/classes',
         component: CrossfitClassesComponent
+    },
+    {
+        path: 'coach/classes/new',
+        component: RegisterClassComponent
     }
 ];
 

@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center position-relative">
+    <h1>Register New Class</h1>
+
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label for="date">Date: </label>
+            <input name="date" id="date" type="date" class="form-control" [(ngModel)]="class.dateTime"/>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration: </label>
+            <input name="duration" id="duration" type="number" class="form-control" [(ngModel)]="class.duration"
+                   min="0"/>
+        </div>
+        <div class="form-group">
+            <label>Athletes: </label>
+            <div *ngFor="let athlete of class.athletes">
+                <dl>
+                    <dt>Name:</dt>
+                    <dt>{{ athlete.name }}</dt>
+                    <dt>Member:</dt>
+                    <dt>{{ athlete.member }}</dt>
+                </dl>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Name: </label>
+                <input name="name" id="name" type="text" class="form-control" [(ngModel)]="athlete.name"/>
+            </div>
+            <div class="form-group">
+                <label for="member">Member: </label>
+                <input name="member" id="member" type="checkbox" class="form-control" [(ngModel)]="athlete.member"/>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-secondary" (click)="addAthlete()">Add Athlete</button>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary">Register Class</button>
+        </div>
+    </div>
+</div>

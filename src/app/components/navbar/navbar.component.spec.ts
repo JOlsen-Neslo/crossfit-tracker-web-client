@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { NavbarComponent } from './navbar.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NavbarComponent', () => {
     let component: NavbarComponent;
@@ -10,7 +11,7 @@ describe('NavbarComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [NavbarComponent],
-            imports: [RouterTestingModule]
+            imports: [RouterTestingModule, FontAwesomeModule]
         }).compileComponents();
     }));
 
@@ -24,9 +25,13 @@ describe('NavbarComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it(`should have as title 'Crossfit Tracker'`, () => {
+    it(`should have a title as 'Crossfit Tracker'`, () => {
         const app = fixture.debugElement.componentInstance;
         expect(app.title).toEqual('Crossfit Tracker');
+    });
+
+    it('should have icon property', () => {
+        expect(component.faPlus).toBeDefined();
     });
 
 });

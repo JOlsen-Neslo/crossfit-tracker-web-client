@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CrossfitClassesComponent } from './crossfit-classes.component';
+import { FormsModule } from '@angular/forms';
 
 describe('CrossfitClassesComponent', () => {
     let component: CrossfitClassesComponent;
