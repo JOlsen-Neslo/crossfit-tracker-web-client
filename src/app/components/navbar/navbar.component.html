@@ -6,12 +6,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup" *ngIf="router.url.includes('coach')">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/coach/classes">
+            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/coach/:name/classes">
                 Classes
             </a>
             <a class="nav-item nav-link" routerLink="/coach/classes/new">
                 <fa-icon [icon]="faPlus"></fa-icon>
             </a>
         </div>
+    </div>
+
+    <div class="float-right" *ngIf="router.url.includes('coach')">
+        <button class="btn btn-danger" (click)="logout()">Log Out</button>
     </div>
 </nav>

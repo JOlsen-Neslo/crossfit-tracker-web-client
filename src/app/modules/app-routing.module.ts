@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from '../components/login/login.component';
-import { CrossfitClassesComponent } from '../components/crossfit-classes/crossfit-classes.component';
-import { RegisterClassComponent } from '../components/register-class/register-class.component';
-import { ClassViewComponent } from '../components/class-view/class-view.component';
+import { CrossfitClassesComponent } from '../components/coach/crossfit-classes/crossfit-classes.component';
+import { RegisterClassComponent } from '../components/coach/register-class/register-class.component';
+import { ClassViewComponent } from '../components/coach/class-view/class-view.component';
+import { CoachComponent } from '../components/coach/coach.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Route[] = [
     {
@@ -11,17 +13,26 @@ const routes: Route[] = [
         component: LoginComponent
     },
     {
-        path: 'coach/classes',
-        component: CrossfitClassesComponent
-    },
-    {
-        path: 'coach/classes/:id',
-        component: ClassViewComponent
-    },
-    {
-        path: 'coach/classes/new',
-        component: RegisterClassComponent
+        path: 'coach',
+        component: CoachComponent,
+        canActivate: [AuthGuard],
+        canActivateChild: [AuthGuard],
+        children: [
+            {
+                path: ':name/classes',
+                component: CrossfitClassesComponent
+            },
+            {
+                path: ':name/classes/:id',
+                component: ClassViewComponent
+            },
+            {
+                path: ':name/classes/new',
+                component: RegisterClassComponent
+            }
+        ]
     }
+
 ];
 
 @NgModule({
