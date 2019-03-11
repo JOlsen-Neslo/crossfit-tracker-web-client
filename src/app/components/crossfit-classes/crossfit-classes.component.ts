@@ -12,6 +12,7 @@ export class CrossfitClassesComponent implements OnInit {
 
   ngOnInit() {
       this.classes = [{
+          id: 0,
           dateTime: new Date(),
           duration: 20,
           athletes: [{
@@ -19,6 +20,7 @@ export class CrossfitClassesComponent implements OnInit {
               member: false
           }]
       }, {
+          id: 1,
           dateTime: new Date().setDate(24),
           duration: 20,
           athletes: [{
@@ -26,7 +28,6 @@ export class CrossfitClassesComponent implements OnInit {
               member: true
           }]
       }];
-
   }
 
 }
