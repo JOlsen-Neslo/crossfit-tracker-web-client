@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from '../components/app.component';
 import { LoginComponent } from '../components/login/login.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
+import { CrossfitClassesComponent } from '../components/crossfit-classes/crossfit-classes.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
-        NavbarComponent
+        NavbarComponent,
+        CrossfitClassesComponent
     ],
     imports: [
         AppRoutingModule,

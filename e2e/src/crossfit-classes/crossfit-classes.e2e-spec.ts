@@ -1,21 +1,20 @@
-import { NavbarPage } from './navbar.po';
+import { CrossfitClassesPage } from './crossfit-classes.po';
 import { browser, logging } from 'protractor';
 
-describe('Navbar', () => {
-    let page: NavbarPage;
+describe('Crossfit Classes', () => {
+    let page: CrossfitClassesPage;
 
     beforeEach(() => {
-        page = new NavbarPage();
+        page = new CrossfitClassesPage();
         page.navigateTo();
     });
 
-    it('should display Crossfit Tracker title', () => {
-        expect(page.getTitle()).toEqual('Crossfit Tracker');
+    it('should display heading', () => {
+        expect(page.getHeading()).toEqual('Welcome coach, Jordan!');
     });
 
-    it('should display tabs if at coach route', () => {
-        page.navigateToCoach();
-        expect(page.getTabs()).toBeDefined();
+    it('should display class list', () => {
+        expect(page.getClassList()).toBeDefined();
     });
 
     afterEach(async () => {
