@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+
 import { CoachService } from '../../../services/coach.service';
 
 @Component({
@@ -9,10 +11,12 @@ import { CoachService } from '../../../services/coach.service';
 })
 export class CrossfitClassesComponent {
 
+    faPlus = faPlusSquare;
+
     name = '';
     classes = [];
 
-    constructor(private route: ActivatedRoute, private coachService: CoachService) {
+    constructor(private route: ActivatedRoute, private coachService: CoachService, private router: Router) {
         this.route.paramMap.subscribe(params => this.getCoach(params.get('name')));
     }
 
@@ -23,6 +27,10 @@ export class CrossfitClassesComponent {
         }, error => {
             console.error(error);
         });
+    }
+
+    newClass(): void {
+        this.router.navigate([`coach/${this.coachService.getName()}/class`]);
     }
 
 }

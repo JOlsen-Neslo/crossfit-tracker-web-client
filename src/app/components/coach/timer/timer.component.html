@@ -1,0 +1,16 @@
+<h1 class="text-center">Class Timer</h1>
+<div>
+    <div class="timer mt-3 mb-3 text-center">
+        {{ time | date: "HH:mm:ss.SSS": "UTC" }}
+    </div>
+
+    <div class="btn-group center-group">
+        <button class="btn btn-primary" [disabled]="running" (click)="startTimer()">Start</button>
+        <button class="btn btn-secondary" [disabled]="!running" (click)="pauseTimer()">Pause</button>
+    </div>
+
+    <div class="clearfix mt-5">
+        <button class="btn btn-success" (click)="complete()">Complete</button>
+        <button class="btn btn-danger float-right" (click)="location.back()">Back</button>
+    </div>
+</div>

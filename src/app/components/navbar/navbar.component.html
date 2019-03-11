@@ -1,16 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="/">{{ title }}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    <a class="navbar-brand" (click)="navigate('/coach/:name/classes')">{{ title }}</a>
+    <button class="navbar-toggler d-none d-sm-block d-md-none" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" *ngIf="router.url.includes('coach')">
+    <div class="collapse navbar-collapse d-none d-md-block" id="navbarNavAltMarkup" *ngIf="router.url.includes('coach')">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" routerLinkActive="active" (click)="navigate('/coach/:name/classes')">
+            <a class="nav-item nav-link pointer" routerLinkActive="active" (click)="navigate('/coach/:name/classes')">
                 Classes
             </a>
             <a class="nav-item nav-link" (click)="navigate('/coach/:name/class')">
-                <fa-icon [icon]="faPlus"></fa-icon>
+                <fa-icon class="pointer" [icon]="faPlus"></fa-icon>
             </a>
         </div>
     </div>

@@ -19,6 +19,10 @@ import { ClassViewComponent } from '../components/coach/class-view/class-view.co
 import { LocalStorageService } from '../services/local-storage.service';
 import { CoachComponent } from '../components/coach/coach.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { ClassSummaryComponent } from '../components/coach/class-summary/class-summary.component';
+import { ClassService } from '../services/class.service';
+import { RegisterComponent } from '../components/register/register.component';
+import { TimerComponent } from '../components/coach/timer/timer.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +32,10 @@ import { AuthGuard } from '../guards/auth.guard';
         CrossfitClassesComponent,
         RegisterClassComponent,
         ClassViewComponent,
-        CoachComponent
+        CoachComponent,
+        ClassSummaryComponent,
+        RegisterComponent,
+        TimerComponent
     ],
     imports: [
         AppRoutingModule,
@@ -42,6 +49,7 @@ import { AuthGuard } from '../guards/auth.guard';
         FetchClientService,
         CoachService,
         LocalStorageService,
+        ClassService,
         AuthGuard
     ],
     bootstrap: [AppComponent]

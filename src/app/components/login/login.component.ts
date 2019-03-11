@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CoachService } from '../../services/coach.service';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 import { Coach } from '../../models/coach.model';
-import { LocalStorageService } from '../../services/local-storage.service';
 import { Credentials } from '../../models/credentials.model';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',

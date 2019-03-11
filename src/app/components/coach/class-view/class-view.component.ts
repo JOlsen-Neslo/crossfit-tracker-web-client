@@ -1,43 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+
+import { CoachService } from '../../../services/coach.service';
+import { ClassService } from '../../../services/class.service';
+import { CrossfitClass } from '../../../models/crossfit-class.model';
 
 @Component({
     selector: 'app-class-view',
     templateUrl: './class-view.component.html',
-    styleUrls: ['./class-view.component.css']
+    styleUrls: ['./class-view.component.css', '../coach.component.css']
 })
 export class ClassViewComponent implements OnInit {
 
-    classes = [];
-    selectedClass = {};
+    faCheck = faCheck;
+    faTimes = faTimes;
 
-    constructor(private route: ActivatedRoute, private location: Location) {
+    selectedClass: CrossfitClass;
+
+    constructor(private route: ActivatedRoute, private location: Location,
+                private coachService: CoachService, private classService: ClassService) {
     }
 
     ngOnInit() {
-        this.classes = [{
-            id: 0,
-            dateTime: new Date(),
-            duration: 20,
-            athletes: [{
-                name: 'Justin',
-                member: false
-            }]
-        }, {
-            id: 1,
-            dateTime: new Date().setDate(24),
-            duration: 20,
-            athletes: [{
-                name: 'Jason',
-                member: true
-            }]
-        }];
+        this.route.paramMap.subscribe(params => this.getClass(params.get('id')));
+    }
 
-        const id = Number(this.route.snapshot.paramMap.get('id'));
-        // this.route.paramMap.subscribe(pmap => this.getHero(pmap.get('id')));
-        this.selectedClass = this.classes.find(aClass => {
-            return aClass.id === id;
+    getClass(id: string | number): void {
+        this.coachService.retrieveClass(id).subscribe(response => {
+            this.selectedClass = response;
+            delete this.selectedClass.athletes;
+            this.getAthletes(id);
+        }, error => {
+            console.error(error);
+        });
+    }
+
+    getAthletes(id: string | number): void {
+        console.log("here");
+        this.classService.retrieveAthletes(id).subscribe(response => {
+            this.selectedClass.athletes = response;
+        }, error => {
+            console.error(error);
         });
     }
 

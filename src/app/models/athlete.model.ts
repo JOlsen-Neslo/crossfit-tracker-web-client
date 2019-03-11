@@ -7,4 +7,11 @@ export class Athlete extends ApiEntity {
     member: boolean;
     classes: CrossfitClass[];
 
+    constructor() {
+        super();
+
+        this.name = '';
+        this.member = false;
+    }
+
 }

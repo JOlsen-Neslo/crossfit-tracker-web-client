@@ -5,7 +5,7 @@ export class Coach extends ApiEntity {
     name: string;
     password: string;
 
-    constructor(name, password) {
+    constructor(name?: string, password?: string) {
         super();
 
         this.name = name;

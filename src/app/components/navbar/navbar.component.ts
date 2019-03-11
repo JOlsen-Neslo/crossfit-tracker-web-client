@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+
 import { LocalStorageService } from '../../services/local-storage.service';
 import { CoachService } from '../../services/coach.service';
 
@@ -18,6 +19,10 @@ export class NavbarComponent {
     }
 
     navigate(path: string): void {
+        if (!this.router.url.includes('coach')) {
+            return;
+        }
+
         this.router.navigate([path.replace(':name', this.coachService.getName())]);
     }
 

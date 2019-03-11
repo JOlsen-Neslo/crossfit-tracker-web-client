@@ -1,26 +1,39 @@
-<h1>Register New Class</h1>
+<h1 class="text-center">Register New Class</h1>
+<hr/>
 
 <div class="col-sm-12">
     <div class="form-group">
         <label for="date">Date: </label>
-        <input name="date" id="date" type="date" class="form-control" [(ngModel)]="class.dateTime"/>
+        <input name="date" id="date" type="datetime-local" class="form-control" [(ngModel)]="class.dateTime"/>
     </div>
     <div class="form-group">
-        <label for="duration">Duration: </label>
-        <input name="duration" id="duration" type="number" class="form-control" [(ngModel)]="class.duration"
-               min="0"/>
+        <table class="table table-striped text-white text-center" *ngIf="class.athletes.length > 0">
+            <thead>
+            <tr class="bg-white-opaque">
+                <th colspan="1">Athlete Name</th>
+                <th class="text-white" colspan="1">Is Athlete a Member?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let athlete of class.athletes">
+                <td>{{ athlete.name }}</td>
+                <td>
+                    <fa-icon class="col-success" *ngIf="athlete.member" [icon]="faCheck"></fa-icon>
+                    <fa-icon class="col-danger" *ngIf="!athlete.member" [icon]="faTimes"></fa-icon>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <div class="form-group">
-        <label>Athletes: </label>
-        <div *ngFor="let athlete of class.athletes">
-            <dl>
-                <dt>Name:</dt>
-                <dt>{{ athlete.name }}</dt>
-                <dt>Member:</dt>
-                <dt>{{ athlete.member }}</dt>
-            </dl>
-        </div>
+    <hr/>
 
+    <div class="text-center col-info" *ngIf="!adding">
+        <fa-icon class="add pointer" [icon]="faPlus" (click)="changeContext()"></fa-icon>
+        <p>Add new athlete</p>
+    </div>
+
+    <div *ngIf="adding">
+        <h3 class="text-center">New Athlete Details:</h3>
         <div class="form-group">
             <label for="name">Name: </label>
             <input name="name" id="name" type="text" class="form-control" [(ngModel)]="athlete.name"/>
@@ -29,12 +42,14 @@
             <label for="member">Member: </label>
             <input name="member" id="member" type="checkbox" class="form-control" [(ngModel)]="athlete.member"/>
         </div>
-        <div class="btn-group">
-            <button class="btn btn-secondary" (click)="addAthlete()">Add Athlete</button>
+        <div class="clearfix text-center">
+            <button class="btn btn-info mr-2" [disabled]="!athlete.name" (click)="addAthlete()">Add Athlete</button>
+            <button class="btn btn-secondary ml-2" (click)="cancel()">Cancel</button>
         </div>
     </div>
 
-    <div class="btn-group">
-        <button type="submit" class="btn btn-primary">Register Class</button>
+    <div class="clearfix mt-3">
+        <button type="submit" class="btn btn-success" [disabled]="class.athletes.length === 0" (click)="next()">Next</button>
+        <button class="btn btn-danger float-right" (click)="location.back()">Back</button>
     </div>
 </div>

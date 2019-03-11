@@ -1,6 +1,6 @@
-<div class="d-flex justify-content-center position-relative">
-    <h2>Coach Login</h2>
-    <div class="col-sm-6">
+<div class="bg-primary-col container-center">
+    <h2 class="text-center">Coach Login</h2>
+    <div class="col-sm-12">
         <div class="form-group">
             <label for="name">Name: </label>
             <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name"/>
@@ -9,8 +9,9 @@
             <label for="password">Password: </label>
             <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password"/>
         </div>
-        <div class="btn-group">
+        <div class="clearfix">
             <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+            <button type="button" class="btn btn-secondary float-right" routerLink="/register">Register</button>
         </div>
     </div>
 </div>

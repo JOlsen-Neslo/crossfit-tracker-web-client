@@ -1,15 +1,29 @@
-<h2>ID: {{ selectedClass.id }}</h2>
-<h2>Date: {{ selectedClass.dateTime | date }}</h2>
-<h2>Duration: {{ selectedClass.duration }}</h2>
-<div *ngFor="let athlete of selectedClass.athletes">
-    <dl>
-        <dt>Name:</dt>
-        <dt>{{ athlete.name }}</dt>
+<h1 class="text-center">Class Details</h1>
+<hr/>
 
-        <dt>Member:</dt>
-        <dt>{{ athlete.member }}</dt>
-    </dl>
+<div>
+    <h4>Date: <span class="font-italic font-weight-normal">{{ selectedClass.dateTime.date | date }}</span></h4>
+    <h4>Duration: <span class="font-italic font-weight-normal">{{ selectedClass.duration }} min(s)</span></h4>
 </div>
-<div class="btn-group">
+<hr/>
+
+<table class="table table-striped text-white text-center" *ngIf="selectedClass">
+    <thead>
+    <tr class="bg-white-opaque">
+        <th colspan="1">Athlete Name</th>
+        <th class="text-white" colspan="1">Is Athlete a Member?</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let athlete of selectedClass.athletes">
+        <td>{{ athlete.name }}</td>
+        <td>
+            <fa-icon class="col-success" *ngIf="athlete.member" [icon]="faCheck"></fa-icon>
+            <fa-icon class="col-danger" *ngIf="!athlete.member" [icon]="faTimes"></fa-icon>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="clearfix mt-5 text-center">
     <button class="btn btn-danger" (click)="location.back()">Back</button>
 </div>

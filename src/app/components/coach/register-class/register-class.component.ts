@@ -1,28 +1,63 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { formatDate, Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { faCheck, faPlusCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+
+import { CoachService } from '../../../services/coach.service';
+import { CrossfitClass } from '../../../models/crossfit-class.model';
+import { Athlete } from '../../../models/athlete.model';
 
 @Component({
     selector: 'app-register-class',
     templateUrl: './register-class.component.html',
-    styleUrls: ['./register-class.component.css']
+    styleUrls: ['./register-class.component.css', '../coach.component.css']
 })
-export class RegisterClassComponent {
+export class RegisterClassComponent implements OnInit {
 
-    athlete = {
-        name: '',
-        member: false
-    };
-    class = {
-        dateTime: new Date(),
-        duration: 0,
-        athletes: []
-    };
+    faCheck = faCheck;
+    faTimes = faTimes;
+    faPlus = faPlusCircle;
+
+    athlete = new Athlete();
+    class = new CrossfitClass();
+
+    adding = false;
+
+    constructor(private router: Router, private coachService: CoachService, private location: Location) {
+        this.fixDate();
+    }
+
+    ngOnInit(): void {
+        const serviceClass = this.coachService.getClass();
+        if (serviceClass) {
+            this.class = serviceClass;
+        }
+        this.fixDate();
+    }
+
+    fixDate(): void {
+        const date = new Date(this.class.dateTime);
+        this.class.dateTime = formatDate(date, 'yyyy-MM-dd\THH:mm:ss', 'en-ZA');
+    }
 
     addAthlete() {
         this.class.athletes.push(this.athlete);
-        this.athlete = {
-            name: '',
-            member: false
-        };
+        this.athlete = new Athlete();
+        this.changeContext();
+    }
+
+    next() {
+        this.coachService.setClass(this.class);
+        this.router.navigate([`/coach/${this.coachService.getName()}/class/timer`]);
+    }
+
+    changeContext(): void {
+        this.adding = !this.adding;
+    }
+
+    cancel() {
+        this.athlete = new Athlete();
+        this.changeContext();
     }
 
 }
