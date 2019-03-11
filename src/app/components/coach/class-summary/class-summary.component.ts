@@ -5,6 +5,7 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import { CoachService } from '../../../services/coach.service';
 import { CrossfitClass } from '../../../models/crossfit-class.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-class-summary',
@@ -18,7 +19,7 @@ export class ClassSummaryComponent implements OnInit {
 
     completedClass: CrossfitClass;
 
-    constructor(private coachService: CoachService, private router: Router, private location: Location) {
+    constructor(private coachService: CoachService, private router: Router, private location: Location, private toastr: ToastrService) {
     }
 
     ngOnInit() {
@@ -29,9 +30,11 @@ export class ClassSummaryComponent implements OnInit {
     register() {
         this.completedClass.dateTime = new Date(this.completedClass.dateTime).getTime();
         this.coachService.registerClass(this.completedClass).subscribe(response => {
+            this.coachService.setClass(undefined);
+            this.toastr.success('Successfully registered the class!', 'Register Class');
             this.router.navigate([`coach/${this.coachService.getName()}/classes`]);
         }, error => {
-            console.log(error);
+            this.toastr.error(error.error.error, 'Register Class');
         });
     }
 

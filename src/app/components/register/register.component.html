@@ -10,7 +10,7 @@
             <input type="password" id="password" name="password" class="form-control" [(ngModel)]="coach.password"/>
         </div>
         <div class="clearfix">
-            <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!coach.name && !coach.password" (click)="register()">Register</button>
             <button type="button" class="btn btn-secondary float-right" (click)="location.back()">Back</button>
         </div>
     </div>

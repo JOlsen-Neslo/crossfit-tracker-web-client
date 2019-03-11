@@ -23,6 +23,8 @@ import { ClassSummaryComponent } from '../components/coach/class-summary/class-s
 import { ClassService } from '../services/class.service';
 import { RegisterComponent } from '../components/register/register.component';
 import { TimerComponent } from '../components/coach/timer/timer.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -43,7 +45,9 @@ import { TimerComponent } from '../components/coach/timer/timer.component';
         FormsModule,
         FontAwesomeModule,
         CommonModule,
-        HttpClientModule
+        HttpClientModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot()
     ],
     providers: [
         FetchClientService,

@@ -21,6 +21,7 @@
                     <fa-icon class="col-success" *ngIf="athlete.member" [icon]="faCheck"></fa-icon>
                     <fa-icon class="col-danger" *ngIf="!athlete.member" [icon]="faTimes"></fa-icon>
                 </td>
+                <td><fa-icon class="pointer" [icon]="faTrash" (click)="removeAthlete(athlete)"></fa-icon></td>
             </tr>
             </tbody>
         </table>

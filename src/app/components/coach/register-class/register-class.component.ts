@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { formatDate, Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { faCheck, faPlusCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faPlusCircle, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import { CoachService } from '../../../services/coach.service';
 import { CrossfitClass } from '../../../models/crossfit-class.model';
@@ -17,6 +17,7 @@ export class RegisterClassComponent implements OnInit {
     faCheck = faCheck;
     faTimes = faTimes;
     faPlus = faPlusCircle;
+    faTrash = faTrash;
 
     athlete = new Athlete();
     class = new CrossfitClass();
@@ -44,6 +45,10 @@ export class RegisterClassComponent implements OnInit {
         this.class.athletes.push(this.athlete);
         this.athlete = new Athlete();
         this.changeContext();
+    }
+
+    removeAthlete(athlete: Athlete): void {
+        this.class.athletes = this.class.athletes.filter(anAthlete => anAthlete.name !== athlete.name);
     }
 
     next() {
