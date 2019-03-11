@@ -27,7 +27,7 @@ const routes: Route[] = [
                 component: ClassViewComponent
             },
             {
-                path: ':name/classes/new',
+                path: ':name/class',
                 component: RegisterClassComponent
             }
         ]

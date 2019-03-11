@@ -1,20 +1,18 @@
-<div class="d-flex justify-content-center position-relative">
-    <h1>Welcome coach, {{ name }}!</h1>
+<h1>Welcome coach, {{ name }}!</h1>
 
-    <div class="col-sm-12">
-        <div class="col-sm-6" *ngFor="let aClass of classes">
-            <dl>
-                <dt>Date:</dt>
-                <dd>{{ aClass.dateTime.date | date }}</dd>
+<div class="col-sm-12">
+    <div class="col-sm-6" *ngFor="let aClass of classes">
+        <dl>
+            <dt>Date:</dt>
+            <dd>{{ aClass.dateTime.date | date }}</dd>
 
-                <dt>Duration:</dt>
-                <dd>{{ aClass.duration }}</dd>
+            <dt>Duration:</dt>
+            <dd>{{ aClass.duration }}</dd>
 
-                <dt>Athlete List:</dt>
-                <dd>
-                    <button class="btn btn-secondary" routerLink="{{aClass.id}}">View</button>
-                </dd>
-            </dl>
-        </div>
+            <dt>Athlete List:</dt>
+            <dd>
+                <button class="btn btn-secondary" routerLink="{{aClass.id}}">View</button>
+            </dd>
+        </dl>
     </div>
 </div>

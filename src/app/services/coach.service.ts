@@ -9,6 +9,8 @@ import { CrossfitClass } from '../models/crossfit-class.model';
 @Injectable()
 export class CoachService {
 
+    private name = '';
+
     constructor(private fetchClient: FetchClientService) {
     }
 
@@ -17,7 +19,16 @@ export class CoachService {
     }
 
     retrieveCoachClasses(name: string): Observable<CrossfitClass[]> {
+        this.name = name;
         return this.fetchClient.get<CrossfitClass[]>(`/coach/${name}/class`);
+    }
+
+    getName(): string {
+        return this.name;
+    }
+
+    clearAll() {
+        delete this.name;
     }
 
 }

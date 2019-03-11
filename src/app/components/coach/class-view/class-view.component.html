@@ -1,17 +1,15 @@
-<div class="d-flex justify-content-center position-relative">
-    <h2>ID: {{ selectedClass.id }}</h2>
-    <h2>Date: {{ selectedClass.dateTime | date }}</h2>
-    <h2>Duration: {{ selectedClass.duration }}</h2>
-    <div *ngFor="let athlete of selectedClass.athletes">
-        <dl>
-            <dt>Name: </dt>
-            <dt>{{ athlete.name }}</dt>
+<h2>ID: {{ selectedClass.id }}</h2>
+<h2>Date: {{ selectedClass.dateTime | date }}</h2>
+<h2>Duration: {{ selectedClass.duration }}</h2>
+<div *ngFor="let athlete of selectedClass.athletes">
+    <dl>
+        <dt>Name:</dt>
+        <dt>{{ athlete.name }}</dt>
 
-            <dt>Member: </dt>
-            <dt>{{ athlete.member }}</dt>
-        </dl>
-    </div>
-    <div class="btn-group">
-        <button class="btn btn-danger" (click)="location.back()">Back</button>
-    </div>
+        <dt>Member:</dt>
+        <dt>{{ athlete.member }}</dt>
+    </dl>
+</div>
+<div class="btn-group">
+    <button class="btn btn-danger" (click)="location.back()">Back</button>
 </div>

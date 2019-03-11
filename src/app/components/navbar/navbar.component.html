@@ -6,10 +6,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup" *ngIf="router.url.includes('coach')">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" routerLinkActive="active" routerLink="/coach/:name/classes">
+            <a class="nav-item nav-link" routerLinkActive="active" (click)="navigate('/coach/:name/classes')">
                 Classes
             </a>
-            <a class="nav-item nav-link" routerLink="/coach/classes/new">
+            <a class="nav-item nav-link" (click)="navigate('/coach/:name/class')">
                 <fa-icon [icon]="faPlus"></fa-icon>
             </a>
         </div>
