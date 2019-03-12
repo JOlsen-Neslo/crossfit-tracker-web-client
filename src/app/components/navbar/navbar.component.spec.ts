@@ -3,6 +3,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { NavbarComponent } from './navbar.component';
+import { CoachService } from '../../services/coach.service';
+import { FetchClientService } from '../../services/fetch-client.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 describe('NavbarComponent', () => {
     let component: NavbarComponent;
@@ -11,7 +15,8 @@ describe('NavbarComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [NavbarComponent],
-            imports: [RouterTestingModule, FontAwesomeModule]
+            imports: [RouterTestingModule, FontAwesomeModule, HttpClientTestingModule],
+            providers: [CoachService, FetchClientService, LocalStorageService]
         }).compileComponents();
     }));
 
@@ -32,6 +37,14 @@ describe('NavbarComponent', () => {
 
     it('should have icon property', () => {
         expect(component.faPlus).toBeDefined();
+    });
+
+    it('should have navigate method', () => {
+        expect(component.navigate).toBeDefined();
+    });
+
+    it('should have logout method', () => {
+        expect(component.logout).toBeDefined();
     });
 
 });

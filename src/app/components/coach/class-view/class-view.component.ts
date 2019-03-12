@@ -18,7 +18,7 @@ export class ClassViewComponent implements OnInit {
     faCheck = faCheck;
     faTimes = faTimes;
 
-    selectedClass: CrossfitClass;
+    selectedClass = new CrossfitClass();
 
     constructor(private route: ActivatedRoute, private location: Location,
                 private coachService: CoachService, private classService: ClassService, private toastr: ToastrService) {

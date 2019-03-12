@@ -4,6 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LocalStorageService } from '../services/local-storage.service';
+import { CoachService } from '../services/coach.service';
+import { FetchClientService } from '../services/fetch-client.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
@@ -15,7 +19,13 @@ describe('AppComponent', () => {
             imports: [
                 RouterTestingModule,
                 FormsModule,
-                FontAwesomeModule
+                FontAwesomeModule,
+                HttpClientTestingModule
+            ],
+            providers: [
+                LocalStorageService,
+                CoachService,
+                FetchClientService
             ]
         }).compileComponents();
     }));
